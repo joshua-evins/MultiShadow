@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiShadow", "MultiShadow\MultiShadow.vcxproj", "{277592AD-7B61-4A7F-BB56-D388657BFFF6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1A4FE7E9-979F-484B-98C4-B439581F8157} = {1A4FE7E9-979F-484B-98C4-B439581F8157}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "..\Engine\Engine.vcxproj", "{1A4FE7E9-979F-484B-98C4-B439581F8157}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CF96C421-C870-409E-ACAA-DEA3B2E8D428}"
+	ProjectSection(SolutionItems) = preProject
+		..\LocalDeploy\Debug\rawOutput = ..\LocalDeploy\Debug\rawOutput
+		..\LocalDeploy\Debug\rawOutput2 = ..\LocalDeploy\Debug\rawOutput2
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{277592AD-7B61-4A7F-BB56-D388657BFFF6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{277592AD-7B61-4A7F-BB56-D388657BFFF6}.Debug|Win32.Build.0 = Debug|Win32
+		{277592AD-7B61-4A7F-BB56-D388657BFFF6}.Release|Win32.ActiveCfg = Release|Win32
+		{277592AD-7B61-4A7F-BB56-D388657BFFF6}.Release|Win32.Build.0 = Release|Win32
+		{1A4FE7E9-979F-484B-98C4-B439581F8157}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1A4FE7E9-979F-484B-98C4-B439581F8157}.Debug|Win32.Build.0 = Debug|Win32
+		{1A4FE7E9-979F-484B-98C4-B439581F8157}.Release|Win32.ActiveCfg = Release|Win32
+		{1A4FE7E9-979F-484B-98C4-B439581F8157}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

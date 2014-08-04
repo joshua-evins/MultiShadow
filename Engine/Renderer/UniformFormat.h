@@ -1,0 +1,19 @@
+#pragma once
+#include "../typedefs_Engine.h"
+namespace Engine
+{
+	enum UniformFormat
+	{
+		GLMVEC2,
+		GLMVEC3,
+		GLMVEC4,
+		GLMVEC4_AFFECTEDBYVIEW,
+		GLMMAT3,
+		GLMMAT4,
+		GLMMAT4_AFFECTEDBYVIEWPERSPECTIVE,
+		GLMMAT4_AFFECTEDBYVIEW,
+		NORMALMAT_FROM_MODELMAT,
+		FLOAT,
+		INT
+	};
+}
