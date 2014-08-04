@@ -168,3 +168,9 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+# jevins
+*.tlog
+*.idb
+*.lastbuildstate
+*.exp
