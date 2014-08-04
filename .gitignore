@@ -174,3 +174,5 @@ FakesAssemblies/
 *.idb
 *.lastbuildstate
 *.exp
+*.dll
+*.exe

@@ -49,4 +49,16 @@ namespace Engine
 		menus[window]->slideVector(description, theVector, numVectorComponents, min, max);
 #endif
 	}
+
+	void DebugMenuManager::newRowWidget(QMainWindow* window)
+	{
+#ifdef ENGINE_DEBUG
+		menus[window]->newRowWidget();
+#endif
+	}
+
+	void DebugMenuManager::setAutoHide(QMainWindow* window, bool value)
+	{
+		menus[window]->setAutoHide(value);
+	}
 }

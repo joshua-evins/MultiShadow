@@ -17,9 +17,12 @@ Window_MultiShadow::Window_MultiShadow()
 	dmm.attachDebugMenu(this);
 	dmm.slideFloat(this, "Alpha (for the flame-whirl): ", &alpha, 0.0f, 1.0f);
 	dmm.slideFloat(this, "Discard threshold (also for the flame-whirl): ", &discardThreshold, 0.0f, 1.0f);
+	
+	dmm.newRowWidget(this);
+
+	dmm.slideVector(this, "Sphere position: ", &spherePosition[0], 3, -20.0f, 20.0f);
 	dmm.controlBool(this, "Enable shadows: ", &useShadows);
 	dmm.controlBool(this, "Color lights: ", &usePrettyColors);
-	dmm.slideVector(this, "Sphere position: ", &spherePosition[0], 3, -20.0f, 20.0f);
 }
 
 void Window_MultiShadow::initialize()

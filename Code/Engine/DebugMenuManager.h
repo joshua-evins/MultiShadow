@@ -35,5 +35,7 @@ namespace Engine
 		void slideFloat(QMainWindow* window, const char* description, float* theFloat, float min, float max);
 		void watchFloat(QMainWindow* window, const char* description, const float* theFloat);
 		void slideVector(QMainWindow* window, const char* description, const float* theVector, int numVectorComponents, float min, float max);
+		void newRowWidget(QMainWindow* window);
+		void setAutoHide(QMainWindow* window, bool value);
 	};
 }

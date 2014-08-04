@@ -8,6 +8,7 @@
 #pragma region Forward Declarations
 	namespace Neumont{class Slider;}
 	class QVBoxLayout;
+	class QHBoxLayout;
 	class QLabel;
 	class QCheckBox;
 	namespace Engine{class Renderer;}
@@ -20,8 +21,10 @@ namespace Engine
 	#pragma region Instance Variables
 		private:
 			QVBoxLayout* mainLayout;
+			QHBoxLayout* currentLayout;
 			unsigned int nextFloatWatcher;
 			unsigned int nextBoolController;
+			bool autoHide;
 	#pragma endregion
 
 	#pragma region Constructors and Initializers
@@ -56,6 +59,8 @@ namespace Engine
 			void slideVector(const char* description, const float* theVector, int numVectorComponents, float min, float max);
 			void update();
 			void resizeByMousePosition();
+			void newRowWidget();
+			void setAutoHide(bool newValue);
 	#pragma endregion
 	protected:
 		virtual void timerEvent(QTimerEvent*);
