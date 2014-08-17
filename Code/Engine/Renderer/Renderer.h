@@ -40,8 +40,6 @@ namespace Engine
 		
 		uint shadowFBO;
 
-		uint nextAvailableUniformBlockBindingPoint;
-
 		uint currentGeometriesIndex;
 		uint currentBufferedGeometriesIndex;
 		uint currentShaderProgramsIndex;

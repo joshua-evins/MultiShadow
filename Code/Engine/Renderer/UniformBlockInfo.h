@@ -6,6 +6,7 @@ namespace Engine
 {
 	struct ENGINE_SHARED UniformBlockInfo
 	{
+		static uint nextAvailableUniformBlockBindingPoint;
 		uint uBuffer;
 		uint uBufferOffset;
 		uint objectSize;

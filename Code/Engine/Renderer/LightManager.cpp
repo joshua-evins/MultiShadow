@@ -14,6 +14,7 @@ namespace Engine
 		currentLightData = &pointLightsRawData[currentLightID];
 		currentLight = &pointLights[currentLightID];
 		shadowMapArray = UINT_MAX;
+		lightTextureBindPoint = 31;
 
 		up = glm::vec3(0.0f, 1.0f, 0.0f);
 
@@ -140,19 +141,15 @@ namespace Engine
 
 	void LightManager::initialize()
 	{
+		// pass data to GL
 		uint blockSize = sizeof(PointLightGLSL) * activeLights;
 		bir = renderer->bufferManager.addData(blockSize, pointLights);
+
+		// initialize UB 
 		gpuData.initialize(sizeof(PointLightGLSL), activeLights, bir.glBufferID, bir.offset);
-		
-		bindPoint = renderer->nextAvailableUniformBlockBindingPoint++;
 
-		glBindBuffer(GL_UNIFORM_BUFFER, bir.glBufferID);
-
-		// this will need to be called again if the number of active lights changes
-		glBindBufferRange(GL_UNIFORM_BUFFER, bindPoint, bir.glBufferID, bir.offset, blockSize);
-
-		// Texture stuff ...
-		glActiveTexture(GL_TEXTURE31);
+		// Texture handling
+		glActiveTexture(GL_TEXTURE0 + lightTextureBindPoint);
 		float border[] = {1.0f, 0.0f, 0.0f, 0.0f};
 		glGenTextures(1, &shadowMapArray);
 		glBindTexture(GL_TEXTURE_2D_ARRAY, shadowMapArray);

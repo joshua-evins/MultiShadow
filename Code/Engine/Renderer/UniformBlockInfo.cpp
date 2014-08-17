@@ -4,6 +4,8 @@
 
 namespace Engine
 {
+	uint UniformBlockInfo::nextAvailableUniformBlockBindingPoint = 0;
+
 	UniformBlockInfo::UniformBlockInfo()
 	{
 		this->uBuffer = UINT_MAX;
@@ -15,6 +17,10 @@ namespace Engine
 		this->numObjects = numObjects;
 		this->uBuffer = uBuffer;
 		this->uBufferOffset = uBufferOffset;
+		bindPoint = nextAvailableUniformBlockBindingPoint++;
+
+		glBindBuffer(GL_UNIFORM_BUFFER, uBuffer);
+		glBindBufferRange(GL_UNIFORM_BUFFER, bindPoint, uBuffer, uBufferOffset, objectSize * numObjects);
 	}
 
 	void UniformBlockInfo::getObjectCopy(uint indexOfObject, void* objectBuffer)

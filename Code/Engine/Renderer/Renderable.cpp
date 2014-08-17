@@ -68,9 +68,6 @@ namespace Engine
 		UniformBlockInfo* currentBlock = &(uniformBlocks[numUniformBlocks]);
 		
 		uint programID = shader->programID;
-
-		// There is no glGenUniformBlockBindingPoint for some reason or another. You have to define your own ids for it.
-		currentBlock->bindPoint = parent->nextAvailableUniformBlockBindingPoint;
 		
 		// Typical-ish uniformLocation query
 		currentBlock->uniformLocation = glGetUniformBlockIndex(programID, name);
@@ -79,48 +76,8 @@ namespace Engine
 		// This is the function that needs to be called in the draw loop so that each uniform block is looking where the Shader or Renderable wants it to look
 		// Take note that even though the binding point hasn't been given any data we can still tell the shader to use it. It's a "pointer", more or less.
 		glUniformBlockBinding(programID, currentBlock->uniformLocation, currentBlock->bindPoint);
-
-		// Below is where the assignment of data to the binding point happens
-
-		// Typical buffer bind call because OpenGL requires them for some reason or another
-		glBindBuffer(GL_UNIFORM_BUFFER, currentBlock->uBuffer);
-
-		// (The first parameter is redundant, just make sure uBuffer is bound to GL_UNIFORM_BUFFER)
-		// Tell bindingPoint that it should reference the data in the buffer object uBuffer starting at uBufferOffset and going for blockSize bytes
-		// The first parameter here is misleading. It is setting metadata on bindingPoint, not GL_UNIFORM_BUFFER
-		glBindBufferRange(GL_UNIFORM_BUFFER, currentBlock->bindPoint, currentBlock->uBuffer, currentBlock->uBufferOffset, blockSize);
-
-
-		// Debugging function below this wall of comments
-		// C++ packs data to N4 (but not necessarily the same way for each compiler)
-			// Becase of this your class/struct may not have the data footprint you expect, which is important here
-			// GLSL structs always assume tightly-packed data, so if your C++ struct has any padding at all you will have alignment issues
-			// In a similar problem, the compiler may also reorder members of your class/struct in order to pack the data more tightly
-		// The below code writes the data in the Uniform Block to a file for inspection
-			// Packing is pretty obvious because it is usually assigned a pattern visible in a hex editor (something like CD, FE, etc.)
-			// Reorded member variables are not always so easy to detect, hence why I manually inspect the data
-	
-
-		//char* buf = new char[chunkSize];
-		//glGetBufferSubData(GL_UNIFORM_BUFFER, parent->nextUniformOffset[parent->currentUniformBufferIndex], chunkSize, buf);
-
-		//if(parent->nextAvailableUniformBlockBindingPoint == 2)
-		//{
-		//std::ofstream out("rawOutput", std::ios::out | std::ios::binary);
-		//
-		//out.write(reinterpret_cast<char*>(&x), sizeof(uint));
-		//x = currentBlock->uBufferOffset;
-		//out.write(reinterpret_cast<char*>(&x), sizeof(uint));
-		//x = GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
-		//out.write(reinterpret_cast<char*>(&x), sizeof(uint));
-		//out.close();
-		//}
-
-		//////////////////////////////////// End buffer save function
 		
 		numUniformBlocks++;
-
-		parent->nextAvailableUniformBlockBindingPoint++;
 		
 		return currentBlock;
 	}

@@ -39,6 +39,7 @@ namespace Engine
 
 	public:
 		uint shadowMapArray;
+		int lightTextureBindPoint;
 		void initialize();
 		int bindPoint;
 		bool initialized;

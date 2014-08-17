@@ -14,7 +14,6 @@ namespace Engine
 
 	Renderer::Renderer() : lightManager(4, this)
 	{
-		nextAvailableUniformBlockBindingPoint = 1;
 		paused = false;
 
 		currentGeometriesIndex = 0;

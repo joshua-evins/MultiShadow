@@ -54,9 +54,8 @@ void Window_MultiShadow::initialize()
 	shader->enableViewMat("ViewMatrix");
 	shader->enableModelView("ModelView");
 
-	int thirtyone = 31;
 	int useShadowsInt = (useShadows) ? 1 : 0;
-	shader->addUniform(Engine::UniformFormat::INT, "shadowMaps", sizeof(int), &thirtyone);
+	shader->addUniform(Engine::UniformFormat::INT, "shadowMaps", sizeof(int), &renderer->lightManager.lightTextureBindPoint);
 	useShadowsUI = shader->addUniform(Engine::UniformFormat::INT, "useShadows", sizeof(int), &useShadowsInt);
 	
 
